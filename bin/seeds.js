@@ -1,11 +1,11 @@
-const users = require('./data/user.data');
-const User = require('./models/User.model');
+const users = require('../data/user.data');
+const User = require('../models/User.model');
 
-const activities = require('./data/activity.data');
-const Activity = require('./models/Activity.model');
+const activities = require('../data/activity.data');
+const Activity = require('../models/Activity.model');
 
-const trainers = require('./data/trainer.data');
-const Trainer = require('./models/Trainer.model');
+const trainers = require('../data/trainer.data');
+const Trainer = require('../models/Trainer.model');
 
 const mongoose = require('mongoose');
 const DB_NAME = 'irongym';
