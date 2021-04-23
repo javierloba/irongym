@@ -1,6 +1,6 @@
 const users = [
   {
-    image: url("img/user_1.jpg"),
+    image: "img/user_1.jpg",
     name: "Sarah",
     email: "sarah@mymail.com",
     password: 1234,
@@ -9,7 +9,7 @@ const users = [
     trainerReserve: []
   },
   {
-    image: url("img/user_2.jpg"),
+    image: "img/user_2.jpg",
     name: "Mark",
     email: "mark@mymail.com",
     password: 9876,
@@ -18,7 +18,7 @@ const users = [
     trainerReserve: []
   },
   {
-    image: url("img/user_3.jpg"),
+    image: "img/user_3.jpg",
     name: "David",
     email: "david@mymail.com",
     password: 5678,

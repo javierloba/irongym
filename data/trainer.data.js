@@ -1,14 +1,6 @@
 const trainers = [
   {
-    image: url("img/zumba_coach.jpeg"), 
-    name: "Sandra", 
-    age: 27, 
-    certificate: "Zumba Trainer Certificate", 
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    sports: "Zumba" 
-  },
-  {
-    image: url("img/swimming_coach.jpeg"), 
+    image: "img/swimming_coach.jpeg", 
     name: "Peter", 
     age: 38, 
     certificate: "Swimming Trainer Certificate", 
@@ -16,7 +8,15 @@ const trainers = [
     sports: "Swimming" 
   },
   {
-    image: url("img/boxing_coach.jpg"), 
+    image: "img/zumba_coach.jpeg", 
+    name: "Sandra", 
+    age: 27, 
+    certificate: "Zumba Trainer Certificate", 
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    sports: "Zumba" 
+  },
+  {
+    image: "img/boxing_coach.jpg", 
     name: "Bob", 
     age: 35, 
     certificate: "Boxing Trainer Certificate", 
