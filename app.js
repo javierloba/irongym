@@ -15,15 +15,20 @@ require('./configs/middleware.config')(app)
 //Configs
 require('./configs/views.config')(app);
 require('./configs/locals.config')(app);
-// require('./configs/session.config')(app);
+//require('./configs/session.config')(app);
 //require('./configs/passport.config')(app);
 
 // Routes middleware goes here
 const index = require('./routes/index');
-// const authRoutes = require('./routes/auth.routes');
-// const privateRouter = require('./routes/auth.routes');
+const trainers = require('./routes/trainers')
+const activities = require('./routes/activities');
+const authRoutes = require('./routes/auth.routes');
+const privateRouter = require('./routes/auth.routes');
+
 app.use('/', index);
-// app.use('/auth', authRoutes);
-// app.use('/private', privateRouter);
+app.use('/trainers', trainers);
+app.use('/activities', activities)
+app.use('/auth', authRoutes);
+app.use('/private', privateRouter);
 
 module.exports = app;

@@ -1,0 +1,38 @@
+.home-cards{
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  padding-top: 50px;
+}
+
+.home-description{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.card-title{
+  display: flex;
+  justify-content: center;
+}
+
+.btn-primary{
+  display: flex;
+  justify-content: center;
+}
+
+.activities-cards{
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  padding-top: 50px;
+}
+
+.trainers-cards{
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  padding-top: 50px;
+}
