@@ -15,8 +15,8 @@ require('./configs/middleware.config')(app)
 //Configs
 require('./configs/views.config')(app);
 require('./configs/locals.config')(app);
-//require('./configs/session.config')(app);
-//require('./configs/passport.config')(app);
+require('./configs/session.config')(app);
+require('./configs/passport.config')(app);
 
 // Routes middleware goes here
 const index = require('./routes/index');

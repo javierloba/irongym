@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const User = require('../models/User.model');
-//const { isLoggedOut } = require('../middlewares')
+const { isLoggedOut } = require('../middlewares')
 const router = express.Router();
 const saltRounds = 10;
 
@@ -32,9 +32,10 @@ router.post('/signup', (req, res) => {
 
     const salt = bcrypt.genSaltSync(saltRounds);
     const hashPass = bcrypt.hashSync(password, salt)
-    
-    User.create({ name, age, email, password: hashPass})
+
+    User.create({ email, password: hashPass})
       .then((newUser) => {
+        console.log(newUser)
         req.login(newUser, (error) => {
           if (error) {
             next(error)
