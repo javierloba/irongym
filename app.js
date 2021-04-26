@@ -23,7 +23,7 @@ const index = require('./routes/index');
 const trainers = require('./routes/trainers')
 const activities = require('./routes/activities');
 const authRoutes = require('./routes/auth.routes');
-const privateRouter = require('./routes/auth.routes');
+const privateRouter = require('./routes/private.routes');
 
 app.use('/', index);
 app.use('/trainers', trainers);

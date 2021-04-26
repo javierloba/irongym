@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const User = require('../models/User.model');
 const { isLoggedOut } = require('../middlewares')
+const { isLoggedIn } = require('../middlewares')
 const router = express.Router();
 const saltRounds = 10;
 
@@ -14,10 +15,10 @@ router.get('/signup', (req, res) => {
 //sends data to DB to create new user
 router.post('/signup', (req, res) => {
 
-  const { email, password } = req.body;
+  const { name, email, password } = req.body;
 
-  if (!email || !password) {
-    res.render('signup', {errorMessage: "email and password are required"})
+  if (!email || !password || !name) {
+    res.render('signup', {errorMessage: "name, email and password are required"})
   }
 
   if (password.length < 3){
@@ -27,15 +28,14 @@ router.post('/signup', (req, res) => {
   User.findOne({ email })
   .then(user => {
     if (user) {
-      return res.render('signup', {errorMessage: "User already exists"}) // ESTO SALE
+      return res.render('signup', {errorMessage: "User already exists"})
     }
 
     const salt = bcrypt.genSaltSync(saltRounds);
     const hashPass = bcrypt.hashSync(password, salt)
-// AQUI HAY UN PROBLEMA
-    User.create({ email, password: hashPass})
+
+    User.create({ name, email, password: hashPass})
       .then((newUser) => {
-        console.log(newUser)
         req.login(newUser, (error) => {
           if (error) {
             next(error)
@@ -53,7 +53,7 @@ router.post('/signup', (req, res) => {
 //get data from login view and renders it
 
 router.get('/login', (req, res) => {
-  res.render('login');
+  res.render('login', {message: req.flash('error')[0]})
 })
 
 //send data to DB to login with user authentication
@@ -61,6 +61,7 @@ router.get('/login', (req, res) => {
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/private/profile',
   failureRedirect: '/auth/login',
+  failureFlash: true,
   passReqToCallback: true
 }));
 
