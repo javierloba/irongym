@@ -27,12 +27,12 @@ router.post('/signup', (req, res) => {
   User.findOne({ email })
   .then(user => {
     if (user) {
-      return res.render('signup', {errorMessage: "User already exists"})
+      return res.render('signup', {errorMessage: "User already exists"}) // ESTO SALE
     }
 
     const salt = bcrypt.genSaltSync(saltRounds);
     const hashPass = bcrypt.hashSync(password, salt)
-
+// AQUI HAY UN PROBLEMA
     User.create({ email, password: hashPass})
       .then((newUser) => {
         console.log(newUser)
@@ -50,13 +50,13 @@ router.post('/signup', (req, res) => {
 });
 
 
-//get data from login view and renders it 
+//get data from login view and renders it
 
 router.get('/login', (req, res) => {
   res.render('login');
 })
 
-//send data to DB to login with user authentication 
+//send data to DB to login with user authentication
 
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/private/profile',

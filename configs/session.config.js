@@ -1,5 +1,6 @@
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+
 module.exports = (app) => {
   app.use(
     session({
