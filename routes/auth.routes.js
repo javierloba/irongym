@@ -18,7 +18,7 @@ router.post('/signup', (req, res) => {
   const { name, email, password } = req.body;
 
   if (!email || !password || !name) {
-    res.render('signup', {errorMessage: "name, email and password are required"})
+    res.render('signup', {errorMessage: "Name, email and password are required"})
   }
 
   if (password.length < 3){

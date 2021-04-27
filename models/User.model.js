@@ -8,6 +8,7 @@ const userSchema = new Schema({
   password: {type: String, required: true, trim: true},
   age: {type: Number},
   activityReserve: [],
+  activity_id: {type: Schema.Types.ObjectId, ref: 'Activity'},
   trainerReserve: []
 })
 
