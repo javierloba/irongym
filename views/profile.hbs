@@ -2,4 +2,14 @@
 
 Hello {{ user.name }}
 
-<p>Activity Reserve: {{user.activity_id}}</p>
+<ul>
+{{#each user.activityReserve}}
+<li>Activities: {{this.name}}</li>
+{{/each}}
+</ul>
+
+<ul>
+{{#each user.trainerReserve}}
+<li>Trainers: {{this.name}}</li>
+{{/each}}
+</ul>

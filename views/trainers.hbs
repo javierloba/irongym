@@ -1,49 +1,16 @@
 <h1>Trainers</h1>
 
 <div class='trainers-cards'>
+  {{#each trainers}}
   <div class="card" style="width: 18rem;">
-    <img src="/images/swimming_coach.jpeg" class="card-img-top" alt="...">
+    <img src='{{this.image}}' class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">Swimming</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-        content.
-      </p>
-      {{#if user}}
-      <a href="/private/profile" class="btn btn-primary">Reserve</a>
-      {{else}}
-      <a href="/auth/signup" class="btn btn-primary">Reserve</a>
-      {{/if}}
+      <h5 class="card-title">{{this.name}}</h5>
+      <p class="card-text">{{this.description}}</p>
+      <form action="/private/reserve/trainer/{{this.id}}" method="POST">
+        <button type="submit" class="btn btn-primary">Reserve</button>
+      </form>
     </div>
   </div>
-
-  <div class="card" style="width: 18rem;">
-    <img src="/images/zumba_coach.jpeg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Zumba</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-        content.
-      </p>
-      {{#if user}}
-      <a href="/private/profile" class="btn btn-primary">Reserve</a>
-      {{else}}
-      <a href="/auth/signup" class="btn btn-primary">Reserve</a>
-      {{/if}}
-    </div>
-  </div>
-
-  <div class="card" style="width: 18rem;">
-    <img src="/images/boxing_coach.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Boxing</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-        content.
-      </p>
-      {{#if user}}
-      <a href="/private/profile" class="btn btn-primary">Reserve</a>
-      {{else}}
-      <a href="/auth/signup" class="btn btn-primary">Reserve</a>
-      {{/if}}
-    </div>
-  </div>
-
+  {{/each}}
 </div>

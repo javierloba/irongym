@@ -7,9 +7,8 @@ const userSchema = new Schema({
   email: {type: String, required: true, lowercase: true, trim: true},
   password: {type: String, required: true, trim: true},
   age: {type: Number},
-  activityReserve: [],
-  activity_id: {type: Schema.Types.ObjectId, ref: 'Activity'},
-  trainerReserve: []
+  activityReserve: [{type: Schema.Types.ObjectId, ref: 'Activity'}],
+  trainerReserve: [{type: Schema.Types.ObjectId, ref: 'Trainer'}]
 })
 
 const User = mongoose.model('User', userSchema);

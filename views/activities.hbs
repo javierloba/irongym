@@ -3,8 +3,6 @@
 
 <div class='activities-cards'>
   {{#each activities}}
-
-
   <div class="card" style="width: 18rem;">
     <img src='{{this.image}}' class="card-img-top" alt="...">
     <div class="card-body">
@@ -15,41 +13,7 @@
       <form action="/private/reserve/activity/{{this.id}}" method="POST">
         <button type="submit" class="btn btn-primary">Reserve</button>
       </form>
- 
-      <a href="/auth/signup" class="btn btn-primary">Reserve</a>
-
     </div>
   </div>
   {{/each}}
-
-  {{!-- <div class="card" style="width: 18rem;">
-    <img src="/images/zumba_activity.jpeg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Zumba</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-        content.
-      </p>
-      {{#if user}}
-      <a href="/private/profile" class="btn btn-primary">Reserve</a>
-      {{else}}
-      <a href="/auth/signup" class="btn btn-primary">Reserve</a>
-      {{/if}}
-    </div>
-  </div>
-
-  <div class="card" style="width: 18rem;">
-    <img src="/images/boxing_activity.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Boxing</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-        content.
-      </p>
-      {{#if user}}
-      <a href="/private/profile" class="btn btn-primary">Reserve</a>
-      {{else}}
-      <a href="/auth/signup" class="btn btn-primary">Reserve</a>
-      {{/if}}
-    </div>
-  </div> --}}
-
 </div>
