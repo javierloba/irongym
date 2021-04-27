@@ -1,12 +1,9 @@
 const express = require('express');
 const router  = express.Router();
-const { isLoggedOut } = require('../middlewares')
-const { isLoggedIn } = require('../middlewares')
 
-/* GET activities page */
+/* GET trainers page */
 router.get('/trainers', (req, res, next) => {
-  const { email } = req.body;
-  res.render('trainers', { email} );
+  res.render('trainers', { user: req.user } );
 });
 
 module.exports = router;

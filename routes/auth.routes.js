@@ -66,9 +66,9 @@ router.post('/login', passport.authenticate('local', {
 }));
 
 //get data from logout and redirect user to home page
-router.get('/logout', (req, res) =>{
-  req.logout();
-  res.redirect('/');
+ router.get('/logout', (req, res) =>{
+   req.logout();
+   res.redirect('/');
 })
 
 module.exports = router;

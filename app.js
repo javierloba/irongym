@@ -25,10 +25,12 @@ const activities = require('./routes/activities');
 const authRoutes = require('./routes/auth.routes');
 const privateRouter = require('./routes/private.routes');
 
+
 app.use('/', index);
 app.use('/trainers', trainers);
 app.use('/activities', activities)
 app.use('/auth', authRoutes);
 app.use('/private', privateRouter);
+app.use('/logout', authRoutes)
 
 module.exports = app;
