@@ -18,21 +18,35 @@ router.get('/profile', isLoggedIn, (req, res, next) => {
 })
 
 
-router.post('/reserve/activity/:id/delete', (req, res) => {
-  console.log('linea 22 route delete')
-  const activity_id = req.params.id;
+router.post('/reserve/activity/:index/delete', (req, res) => {
+  const activity_index = req.params.index;
   const user_id = req.user._id;
-  
-  User.findOneAndUpdate({ _id: user_id}, {$pull: {activityReserve: activity_id}}, {new: true})
-  .then((updatedUser) => {
-    console.log(updatedUser);
-    return res.redirect('/private/profile');
+
+  User.findOne({_id: user_id})
+  .then((user) => {
+    user.activityReserve = user.activityReserve.filter((el, index) => { 
+      return index != activity_index
+    })
+    user.save()
+    .then(() => {
+        return res.redirect('/private/profile');
+      })
+      .catch(error => {
+        console.log(error);
+        return res.redirect('/private/profile');
+      })
   })
-  .catch(error => {
-    console.log(error);
-    return res.redirect('/private/profile');
-  })
-  })
+  .catch((error) => (console.error(error)))
+  // User.findOneAndUpdate({ _id: user_id}, {$pull: {activityReserve: activity_index}}, {new: true})
+  // .then((updatedUser) => {
+  //   console.log(updatedUser);
+  //   return res.redirect('/private/profile');
+  // })
+  // .catch(error => {
+  //   console.log(error);
+  //   return res.redirect('/private/profile');
+  // })
+})
 
 // Post de activities
 router.post('/reserve/activity/:id', (req,res) => {

@@ -5,7 +5,7 @@ const activitySchema = new Schema({
   image: {type: String, default: ''},
   name: {type: String, required: true},
   description: {type: String, required: true},
-  date: {type: Date, default: Date.now},
+  date: {type: String, default: "Every monday"},
   hour: {type: String}
 })
 

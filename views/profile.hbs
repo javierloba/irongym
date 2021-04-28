@@ -1,11 +1,13 @@
 <h1>Profile</h1>
 
+
+
 Hello {{ user.name }}
 
 <ul>
   {{#each user.activityReserve}}
   <li>Activities: {{this.name}}</li>
-  <form action="/private/reserve/activity/{{this.id}}/delete" method="POST">
+  <form action="/private/reserve/activity/{{@index}}/delete" method="POST">
     <button type="submit" class="btn btn-primary">Delete</button>
   </form>
   {{/each}}
