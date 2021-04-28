@@ -42,7 +42,7 @@ router.post('/signup', (req, res) => {
             next(error)
           }
           transporter.sendMail({
-            from: "Contacto web <irongymbcn@gmail.com>",
+            from: "Irongym 💪<irongymbcn@gmail.com>",
             to: email,
             subject: "Bienvenido a Irongym!",
             html:`<p>Gracias por tu registro ${name}</p>`

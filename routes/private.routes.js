@@ -17,6 +17,23 @@ router.get('/profile', isLoggedIn, (req, res, next) => {
   .catch(error => console.error(error))
 })
 
+
+router.post('/reserve/activity/:id/delete', (req, res) => {
+  console.log('linea 22 route delete')
+  const activity_id = req.params.id;
+  const user_id = req.user._id;
+  
+  User.findOneAndUpdate({ _id: user_id}, {$pull: {activityReserve: activity_id}}, {new: true})
+  .then((updatedUser) => {
+    console.log(updatedUser);
+    return res.redirect('/private/profile');
+  })
+  .catch(error => {
+    console.log(error);
+    return res.redirect('/private/profile');
+  })
+  })
+
 // Post de activities
 router.post('/reserve/activity/:id', (req,res) => {
   const activity_id = req.params.id
@@ -36,7 +53,7 @@ router.post('/reserve/activity/:id', (req,res) => {
       Activity.findOne({_id: activity_id})
       .then((activity)=> {
         transporter.sendMail({
-          from: "Contacto web <irongymbcn@gmail.com>",
+          from: "Irongym 💪 <irongymbcn@gmail.com>",
           to: user_mail,
           subject: "Reserva actividad dirigida",
           html:`<p>Confirmamos tu reserva de ${activity.name}</p>`
@@ -53,6 +70,28 @@ router.post('/reserve/activity/:id', (req,res) => {
     .catch(error => console.error(error))
   }
 })
+
+
+router.post('/reserve/trainer/:id/delete', (req, res) => {
+  console.log('linea 76 route delete')
+  const trainer_id = req.params.id;
+  const user_id = req.user._id;
+  
+  User.findOneAndUpdate({ _id: user_id}, {$pull: {trainerReserve: trainer_id}}, {new: true})
+  .then((updatedUser) => {
+    console.log(updatedUser);
+    return res.redirect('/private/profile');
+  })
+  .catch(error => {
+    console.log(error);
+    return res.redirect('/private/profile');
+  })
+  })
+
+
+
+
+
 
 // Post de trainers
 router.post('/reserve/trainer/:id', (req,res) => {

@@ -3,13 +3,19 @@
 Hello {{ user.name }}
 
 <ul>
-{{#each user.activityReserve}}
-<li>Activities: {{this.name}}</li>
-{{/each}}
+  {{#each user.activityReserve}}
+  <li>Activities: {{this.name}}</li>
+  <form action="/private/reserve/activity/{{this.id}}/delete" method="POST">
+    <button type="submit" class="btn btn-primary">Delete</button>
+  </form>
+  {{/each}}
 </ul>
 
 <ul>
-{{#each user.trainerReserve}}
-<li>Trainers: {{this.name}}</li>
-{{/each}}
+  {{#each user.trainerReserve}}
+  <li>Trainers: {{this.name}}</li>
+  <form action="/private/reserve/trainer/{{this.id}}/delete" method="POST">
+    <button type="submit" class="btn btn-primary">Delete</button>
+  </form>
+  {{/each}}
 </ul>
