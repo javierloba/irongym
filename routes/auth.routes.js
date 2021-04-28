@@ -5,6 +5,7 @@ const User = require('../models/User.model');
 const { isLoggedOut } = require('../middlewares')
 const { isLoggedIn } = require('../middlewares')
 const router = express.Router();
+const transporter = require('../configs/nodemailer.config');
 const saltRounds = 10;
 
 //gets the data from signup view and renders it
@@ -40,7 +41,19 @@ router.post('/signup', (req, res) => {
           if (error) {
             next(error)
           }
-          return res.redirect('/private/profile')
+          transporter.sendMail({
+            from: "Contacto web <irongymbcn@gmail.com>",
+            to: email,
+            subject: "Bienvenido a Irongym!",
+            html:`<p>Gracias por tu registro ${name}</p>`
+          })
+          .then(() => {
+            return res.redirect('/private/profile');
+          })
+          .catch(error => {
+            console.log(error);
+            return res.redirect('/private/profile');
+          })
         })
       })
       .catch((error) => {
