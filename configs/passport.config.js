@@ -54,7 +54,7 @@ module.exports = (app) => {
                 return;
             }
 
-            User.create({slackID: profile.id, username: profile.user.name})
+            User.create({slackID: profile.id, name: profile.user.name, email: profile.user.email})
             .then( newUser => {
                 done(null, newUser)
             })

@@ -51,6 +51,7 @@ router.post('/signup', (req, res) => {
             return res.redirect('/private/profile');
           })
           .catch(error => {
+            console.log("error linea 54")
             console.log(error);
             return res.redirect('/private/profile');
           })
