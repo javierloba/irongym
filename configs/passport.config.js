@@ -25,14 +25,11 @@ module.exports = (app) => {
         User.findOne({email})
         .then(user => {
             if(!user) {
-                console.log("passport.config linea 26")
                 return next(null, false, {message: "User or password incorrect"});
             }
             if(bcrypt.compareSync(password, user.password)){
-                console.log("passport.config linea 30")
                 return next(null, user);
             } else {
-                console.log("passport.config linea 33")
                 return next(null, false, { message: "User or password incorrect"})
             }
         })
@@ -45,7 +42,6 @@ module.exports = (app) => {
       callbackURL: "/auth/slack/callback"  
     },
     (accesToken, refreshToken, profile, done) =>{
-        console.log('Slack account:', profile);
 
         User.findOne({slackID: profile.id})
         .then( user  => {

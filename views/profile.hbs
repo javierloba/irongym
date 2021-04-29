@@ -1,23 +1,58 @@
-<h1>Profile</h1>
-
-
-
-Hello {{ user.name }}
-
-<ul>
-  {{#each user.activityReserve}}
-  <li>Activities: {{this.name}}</li>
-  <form action="/private/reserve/activity/{{@index}}/delete" method="POST">
-    <button type="submit" class="btn btn-primary">Delete</button>
-  </form>
-  {{/each}}
-</ul>
-
-<ul>
-  {{#each user.trainerReserve}}
-  <li>Trainers: {{this.name}}</li>
-  <form action="/private/reserve/trainer/{{@index}}/delete" method="POST">
-    <button type="submit" class="btn btn-primary">Delete</button>
-  </form>
-  {{/each}}
-</ul>
+<div class='activities-cards'>
+  <div class="card" style="width: 28rem;">
+    <div class="card-body">
+      <h3 class="card-title">User Profile</h3>
+      <h4 class="card-title">{{user.name}}</h4>
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h3 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+              Activities
+            </button>
+          </h3>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+            data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              <ul>
+                {{#each user.activityReserve}}
+                <li>
+                  <p>Activity: {{this.name}} - Hour: {{this.hour}}</p>
+                </li>
+                <form action="/private/reserve/activity/{{@index}}/delete" method="POST">
+                  <button type="submit" class="btn btn-primary">Cancel reservation</button>
+                </form>
+                <hr>
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h3 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+              Trainers
+            </button>
+          </h3>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+            data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              <ul>
+                {{#each user.trainerReserve}}
+                <li>
+                  <p>Trainer: {{this.name}} - Activity: {{this.sports}}</p>
+                </li>
+                <form action="/private/reserve/trainer/{{@index}}/delete" method="POST">
+                  <button type="submit" class="btn btn-primary">Cancel reservation</button>
+                </form>
+                <hr>
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

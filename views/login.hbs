@@ -1,25 +1,24 @@
-<h1>Login</h1>
-<form method="POST" action="/auth/login">
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+<div class="container">
+  <form method="POST" action="/auth/login">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3">
+      <p class="form-text">Don't have an account?<span><a href="/auth/signup">Sign up</a></span></p>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+  <a href="/auth/slack"><img class="slack-button" alt="" Sign in with Slack"" height="40" width="172"
+      src="https://platform.slack-edge.com/img/sign_in_with_slack.png"
+      srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" /></a>
+  {{#if message}}
+  <div>
+    <p class="error-message"> {{ message }}</p>
   </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input name="password" type="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="mb-3">
-    <p class="form-text">Don't have an account?<span><a href="/auth/signup">Sign up</a></span></p>
-  </div>
-  <button type="submit" class="btn btn-primary">Login</button>
-</form>
-
-<a href="/auth/slack"><img alt="" Sign in with Slack"" height="40" width="172"
-    src="https://platform.slack-edge.com/img/sign_in_with_slack.png"
-    srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" /></a>
-{{#if message}}
-<div>
-  <p class="error-message"> {{ message }}</p>
+  {{/if}}
 </div>
-{{/if}}

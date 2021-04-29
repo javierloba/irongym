@@ -1,12 +1,9 @@
-<h1>Activities</h1>
-
-
 <div class='activities-cards'>
   {{#each activities}}
-  <div class="card" style="width: 18rem;">
+  <div class="card" style="width: 20rem;">
     <img src='{{this.image}}' class="card-img-top" alt="...">
     <div class="card-body">
-      <h4 class="card-title">{{this.name}}</h4>
+      <h3 class="card-title">{{this.name}}</h3>
       <p class="card-text">{{this.description}}</p>
       <form action="/private/reserve/activity/{{this.id}}" method="POST">
         <button type="submit" class="btn btn-primary">Reserve</button>

@@ -60,8 +60,8 @@ router.post('/reserve/activity/:id', (req,res) => {
         transporter.sendMail({
           from: "Irongym 💪 <irongymbcn@gmail.com>",
           to: user_mail,
-          subject: "Reserva actividad dirigida",
-          html:`<p>Confirmamos tu reserva de ${activity.name}</p>`
+          subject: "Activity Reservation Confirmed!",
+          html:`<p>Your reserve: ${activity.name}, is confirmed.</p>`
         })
         .then(() => {
           return res.redirect('/private/profile');
@@ -119,10 +119,10 @@ router.post('/reserve/trainer/:id', (req,res) => {
       Trainer.findOne({_id: trainer_id})
       .then((trainer) => {
         transporter.sendMail({
-          from: "Contacto web <irongymbcn@gmail.com>",
+          from: "Irongym 💪 <irongymbcn@gmail.com>",
           to: user_mail,
-          subject: "Reserva entrenador personal",
-          html:`<p>Confirmamos tu reserva con ${trainer.name}</p>`
+          subject: "Personal Trainer Reservation Confirmed!",
+          html:`<p>Your reserve: ${trainer.name}, is confirmed.</p>`
         })
         .then(() => {
           return res.redirect('/private/profile');

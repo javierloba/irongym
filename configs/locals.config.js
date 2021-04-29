@@ -1,3 +1,3 @@
 module.exports = (app) => {
-  app.locals.title = 'IronGym';
+  app.locals.title = '💪 IronGym';
 }
