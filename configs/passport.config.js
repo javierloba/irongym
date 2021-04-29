@@ -1,5 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const SlackStrategy = require('passport-slack-oauth2').Strategy;
 const User = require('../models/User.model');
 const bcrypt = require('bcryptjs');
 const flash = require('connect-flash');
@@ -37,6 +38,31 @@ module.exports = (app) => {
         })
         .catch(error => next(error))
     }))
+
+    passport.use('slack', new SlackStrategy({
+      clientID: process.env.SLACK_CLIENT_ID,
+      clientSecret: process.env.SLACK_CLIENT_SECRET,
+      callbackURL: "/auth/slack/callback"  
+    },
+    (accesToken, refreshToken, profile, done) =>{
+        console.log('Slack account:', profile);
+
+        User.findOne({slackID: profile.id})
+        .then( user  => {
+            if(user) {
+                done(null, user);
+                return;
+            }
+
+            User.create({slackID: profile.id, username: profile.user.name})
+            .then( newUser => {
+                done(null, newUser)
+            })
+            .catch(error => done(error))
+        })
+        .catch(error => done(error))
+    }
+    ))
     app.use(passport.initialize());
     app.use(passport.session());
 }

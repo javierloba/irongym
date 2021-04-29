@@ -16,7 +16,7 @@ Hello {{ user.name }}
 <ul>
   {{#each user.trainerReserve}}
   <li>Trainers: {{this.name}}</li>
-  <form action="/private/reserve/trainer/{{this.id}}/delete" method="POST">
+  <form action="/private/reserve/trainer/{{@index}}/delete" method="POST">
     <button type="submit" class="btn btn-primary">Delete</button>
   </form>
   {{/each}}

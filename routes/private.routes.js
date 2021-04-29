@@ -37,15 +37,6 @@ router.post('/reserve/activity/:index/delete', (req, res) => {
       })
   })
   .catch((error) => (console.error(error)))
-  // User.findOneAndUpdate({ _id: user_id}, {$pull: {activityReserve: activity_index}}, {new: true})
-  // .then((updatedUser) => {
-  //   console.log(updatedUser);
-  //   return res.redirect('/private/profile');
-  // })
-  // .catch(error => {
-  //   console.log(error);
-  //   return res.redirect('/private/profile');
-  // })
 })
 
 // Post de activities
@@ -86,24 +77,26 @@ router.post('/reserve/activity/:id', (req,res) => {
 })
 
 
-router.post('/reserve/trainer/:id/delete', (req, res) => {
-  console.log('linea 76 route delete')
-  const trainer_id = req.params.id;
+router.post('/reserve/trainer/:index/delete', (req, res) => {
+  const trainer_index = req.params.index;
   const user_id = req.user._id;
-  
-  User.findOneAndUpdate({ _id: user_id}, {$pull: {trainerReserve: trainer_id}}, {new: true})
-  .then((updatedUser) => {
-    console.log(updatedUser);
-    return res.redirect('/private/profile');
-  })
-  .catch(error => {
-    console.log(error);
-    return res.redirect('/private/profile');
-  })
-  })
 
-
-
+  User.findOne({_id: user_id})
+  .then((user) => {
+    user.trainerReserve = user.trainerReserve.filter((el, index) => { 
+      return index != trainer_index
+    })
+    user.save()
+    .then(() => {
+        return res.redirect('/private/profile');
+      })
+      .catch(error => {
+        console.log(error);
+        return res.redirect('/private/profile');
+      })
+  })
+  .catch((error) => (console.error(error)))
+})
 
 
 

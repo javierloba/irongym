@@ -84,4 +84,10 @@ router.post('/login', passport.authenticate('local', {
    res.redirect('/');
 })
 
+router.get("/slack", passport.authenticate('slack'));
+router.get("/slack/callback", passport.authenticate('slack', {
+  successRedirect: "/private/profile",
+  failureRedirect: "/"
+}))
+
 module.exports = router;
