@@ -97,7 +97,7 @@ https://github.com/javierloba/irongym
 
 **Heroku**
 
-Deployment Link
+http://irongymbcn.herokuapp.com/
 
 **Trello**
 
